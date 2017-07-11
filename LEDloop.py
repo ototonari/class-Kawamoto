@@ -16,10 +16,7 @@ while True:
 	time.sleep(Ti)
 	GPIO.output(PIN,GPIO.LOW)
 	time.sleep(Ti)
-	Ti-= 0.02
-
-	if Ti < 0.06:
-		exit()
+	Ti -= 0.05
 
 GPIO.output(PIN,GPIO.LOW)
 GPIO.cleanup()
