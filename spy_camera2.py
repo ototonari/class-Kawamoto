@@ -46,9 +46,12 @@ class _GetchWindows:
 
 PIN=24
 QIN=23
+SW=5
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PIN,GPIO.OUT)
 GPIO.setup(QIN,GPIO.OUT)
+GPIO.setup(SW,GPIO.OUT)
+GPIO.output(SW,GPIO.HIGH)
 p=GPIO.PWM(PIN,50)
 q=GPIO.PWM(QIN,50)
 p.start(5)
@@ -56,7 +59,7 @@ q.start(5)
 time.sleep(1)
 row = 5
 col = 5
-val = 0.5
+val = 0.2
 
 camera = PiCamera()
 camera.resolution = (1024, 768)
@@ -69,10 +72,10 @@ def direction(key):
 	global row
 	global col
 	global val
-	if key == "w" and row > 3:
+	if key == "w" and row > 2:
 		row -= val
 		move()
-	elif key == "s" and row < 8:
+	elif key == "s" and row < 9:
 		row += val
 		move()
 	elif key == "n":
@@ -80,10 +83,10 @@ def direction(key):
 		col = 5
 		val = 0.2
 		move()
-	elif key == "a" and col < 8:
+	elif key == "a" and col < 9:
 		col += val
 		move()
-	elif key == "d" and col > 3:
+	elif key == "d" and col > 2:
 		col -= val
 		move()
 	elif key == "p":
@@ -108,6 +111,7 @@ def cleanup():
 	p.start(5)
 	q.start(5)
 	time.sleep(1)
+        GPIO.output(SW,GPIO.LOW)
 	GPIO.cleanup()
 	print("DONE.")
 	exit()

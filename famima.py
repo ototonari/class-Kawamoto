@@ -2,7 +2,7 @@
 import RPi.GPIO as GPIO
 import time
 GPIO.cleanup()
-PIN=26
+PIN=27
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PIN, GPIO.OUT)
 def scale(f,t=0.25):

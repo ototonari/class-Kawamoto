@@ -1,8 +1,8 @@
 # coding: utf-8
 import RPi.GPIO as GPIO
 import time
-GPIO.cleanup()
-PIN=26
+
+PIN=27
 SWICH=21
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PIN, GPIO.OUT)

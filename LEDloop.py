@@ -10,7 +10,7 @@ Ti=0.5
 GPIO.setmode(GPIO.BCM)
 
 GPIO.setup(PIN,GPIO.OUT)
-while True:
+while Ti >= 0.25:
 
 	GPIO.output(PIN,GPIO.HIGH)
 	time.sleep(Ti)
